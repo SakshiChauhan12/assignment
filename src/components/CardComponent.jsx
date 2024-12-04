@@ -1,23 +1,32 @@
 import React from "react";
 import ImageComponent from "./ImageComponent";
 import "../styles/CardComponent.css";
-import img1 from "../assets/img1.jpeg";
-import img2 from "../assets/img2.jpeg";
-import img3 from "../assets/img3.jpeg";
-import err from "../assets/err.png";
 
 
-const CardComponent = () => {
-  const sampleImages = [img1, img2, img3,err]; 
+
+const CardComponent = ({name,count,sampleImages}) => {
+  
+  //extracting the images from the sampleImages array
+ 
+  
 
   return (
     <div className="card-container">
      
-      <div className="image-section">
-        {sampleImages.map((img, index) => (
-          <ImageComponent key={index} src={img} alt={`Image ${index + 1}`} />
-        ))}
-      </div>
+     <div className="image-section">
+      {sampleImages.map((image, index) => (
+        <div key={index} className="image-wrapper">
+          {image.ready ? (
+            <ImageComponent src={image.url} alt={`image ${index + 1}`} />
+          ) : (
+            <>
+              <ImageComponent src={sampleImages[3].url} alt={`image ${index + 1}`} />
+           
+            </>
+          )}
+        </div>
+      ))}
+    </div>
 
      
       <div className="text-section">
@@ -27,7 +36,7 @@ const CardComponent = () => {
 
    
       <div className="icon-section">
-        <div className="alert-icon">!</div>
+    <img src={sampleImages[3].url} className="error-icon"></img>
       </div>
     </div>
   );
