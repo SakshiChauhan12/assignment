@@ -11,7 +11,7 @@ const App = () => {
     { url: image1, ready: true, error: false },
     { url: image2, ready: true, error: false },
     { url: image3, ready: true, error: false },
-    { url: err, ready: false, error: true },
+    { url: err, ready:false, error: true},
   ];
  
   return (
